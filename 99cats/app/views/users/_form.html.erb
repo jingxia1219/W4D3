@@ -1,0 +1,24 @@
+<% 
+if type == :new
+  action = users_url
+  method = post
+   %>
+
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <label for="user_name">Username</label>
+  <input
+    type="text"
+    name="user[user_name]"
+    id="user_name">
+
+  <label for="password">Password</label>
+  <input
+    type="text"
+    name="user[password]"
+    id="password">
+  
+  <% submit_text = (cat.persisted? ? 'Update' : 'Create') + ' cat!' %>
+  <input type="submit" value="<%= submit_text %>">
+</form>
