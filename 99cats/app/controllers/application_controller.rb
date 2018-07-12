@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   
+  
   def login(user)
     @current_user = user
     session[:session_token] = user.reset_session_token!
@@ -24,4 +25,9 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     redirect_to new_user_url unless logged_in?
   end 
+
+  def already_logged_in
+    redirect_to cats_url if logged_in? 
+  end 
+    
 end

@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  
+  before_action :already_logged_in, only: [:new, :create]
   def index
     @users = User.all
     render :index 
   end
   
   def new
+    # redirect_to cats_url if logged_in?
     @user = User.new
   end
   
@@ -32,4 +33,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:user_name, :password)
   end
+  
+
 end
